@@ -2,7 +2,7 @@ const Pool = require("pg").Pool; //creamos variable con postgres
 
 const pool = new Pool({ //instancia con la configuración
   user: "postgres",
-  password: "root",
+  password: "admin",
   host: "localhost",
   port: 5432,
   database: "perntodo"
