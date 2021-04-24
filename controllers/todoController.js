@@ -1,4 +1,4 @@
-const queries = require('../queries');
+const queries = require('../config/queries');
 
 async function createTodo(req, res) {
   try {
@@ -11,20 +11,36 @@ async function createTodo(req, res) {
   }
 };
 
-async function allTodos(req, res) {
+async function getAllTodos(req, res) {
   try {
-    const allTodos = await queries.allTodosQuery();
-    res.json(allTodos.rows);
+    const todos = await queries.allTodosQuery();
+    res.json(todos.rows);
   } catch (err) {
     console.error(err.message);
   }
 };
 
-async function oneTodo(req, res) {
+async function getOneTodo(req, res) {
   try {
     const { id } = req.params;
-    const allTodos = await queries.oneTodoQuery(id);
-    res.json(allTodos.rows[0]);
+    const todo = await queries.oneTodoQuery(id);
+    res.json(todo.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+async function updateTodo(req, res) {
+  try {
+    const { id } = req.params;
+    const { description } = req.body;
+    const updatedTodo = await queries
+      .updateTodoQuery(id, description);
+    if (updatedTodo.rowCount !== 0) {
+      res.json({ message: "Updated!", updatedTodo: description });
+    } else {
+      res.json({ message: "Not Updated!", count: updatedTodo.rowCount, });
+    }
   } catch (err) {
     console.error(err.message);
   }
@@ -32,6 +48,8 @@ async function oneTodo(req, res) {
 
 module.exports = {
   createTodo,
-  allTodos,
-  oneTodo
+  getAllTodos,
+  getOneTodo,
+  updateTodo
 }
+

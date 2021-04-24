@@ -6,8 +6,10 @@ const api = express.Router();
 // Crear un todo
 api.post("/todos", TodoController.createTodo);
 // Mostrar todos los todos
-api.get("/todos", TodoController.allTodos);
+api.get("/todos", TodoController.getAllTodos);
 // Mostrar todos los todos
-api.get("/todos/:id", TodoController.oneTodo);
+api.get("/todos/:id", TodoController.getOneTodo);
+// Mostrar todos los todos
+api.put("/todos/:id", TodoController.updateTodo);
 
 module.exports = api;

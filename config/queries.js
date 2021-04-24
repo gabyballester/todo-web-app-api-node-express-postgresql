@@ -1,4 +1,4 @@
-const pool = require('./config/db');
+const pool = require('./db');
 
 const createQuery = function (field) {
   return pool.query(
@@ -18,8 +18,17 @@ const oneTodoQuery = function (id) {
   );
 }
 
+const updateTodoQuery = function (id, description) {
+  return pool.query(
+    "UPDATE todo SET description = $1 WHERE todo_id = $2",
+    [description, id]
+  );
+}
+
+
 module.exports = {
   createQuery,
   allTodosQuery,
-  oneTodoQuery
+  oneTodoQuery,
+  updateTodoQuery
 }
