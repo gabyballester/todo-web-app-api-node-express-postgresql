@@ -7,5 +7,7 @@ const api = express.Router();
 api.post("/todos", TodoController.createTodo);
 // Mostrar todos los todos
 api.get("/todos", TodoController.allTodos);
+// Mostrar todos los todos
+api.get("/todos/:id", TodoController.oneTodo);
 
 module.exports = api;
