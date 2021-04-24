@@ -7,9 +7,12 @@ const api = express.Router();
 api.post("/todos", TodoController.createTodo);
 // Mostrar todos los todos
 api.get("/todos", TodoController.getAllTodos);
-// Mostrar todos los todos
+// Mostrar 1 todo
 api.get("/todos/:id", TodoController.getOneTodo);
-// Mostrar todos los todos
+// Actualizar 1 todo
 api.put("/todos/:id", TodoController.updateTodo);
+// Borrar 1 todo
+api.delete("/todos/:id", TodoController.deleteTodo);
+
 
 module.exports = api;

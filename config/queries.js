@@ -25,10 +25,17 @@ const updateTodoQuery = function (id, description) {
   );
 }
 
+const deleteTodoQuery = function (id) {
+  return pool.query(
+    "DELETE FROM todo WHERE todo_id = $1",
+    [id]
+  );
+}
 
 module.exports = {
   createQuery,
   allTodosQuery,
   oneTodoQuery,
-  updateTodoQuery
+  updateTodoQuery,
+  deleteTodoQuery
 }

@@ -24,7 +24,12 @@ async function getOneTodo(req, res) {
   try {
     const { id } = req.params;
     const todo = await queries.oneTodoQuery(id);
-    res.json(todo.rows[0]);
+    if (todo.rowCount !== 0) {
+      res.json(todo.rows[0]);
+    } else {
+      res.json({ message: "Not found!", count: todo.rowCount });
+    }
+
   } catch (err) {
     console.error(err.message);
   }
@@ -46,10 +51,24 @@ async function updateTodo(req, res) {
   }
 };
 
+async function deleteTodo(req, res) {
+  try {
+    const { id } = req.params;
+    const deletedTodo = await queries.deleteTodoQuery(id);
+    if (deletedTodo.rowCount !== 0) {
+      res.json({ message: "Deleted!" });
+    } else {
+      res.json({ message: "Not Deleted!" });
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 module.exports = {
   createTodo,
   getAllTodos,
   getOneTodo,
-  updateTodo
+  updateTodo,
+  deleteTodo
 }
-
