@@ -1,6 +1,6 @@
 ### Todo Web App Full Stack PERN (PostgreSQL Express React Node)
 Este repositorio es sólo el **backend** del proyecto, el frontend lo encontrarás aquí:  
-[https://github.com/gabyballester/todoapp-front-react](https://github.com/gabyballester/todoapp-front-reactt)
+[https://github.com/gabyballester/todo-web-app-front-react-fullstack-pern](https://github.com/gabyballester/todo-web-app-front-react-fullstack-pern)
 ***
 #### Sobre el proyecto 
 - DB config en archivo independiente
